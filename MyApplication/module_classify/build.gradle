@@ -1,0 +1,48 @@
+if(ISNEEDCLASSIFYMODULE.toBoolean()){
+    apply plugin: 'com.android.library'
+}else{
+    apply plugin: 'com.android.application'
+}
+android {
+    compileSdkVersion var.compileSdkVersion
+    buildToolsVersion var.buildToolsVersion
+    defaultConfig {
+        if(!ISNEEDCLASSIFYMODULE.toBoolean()){
+            applicationId var.applicationId_CLASSIFY
+        }
+        minSdkVersion var.minSdkVersion
+        targetSdkVersion var.targetSdkVersion
+        versionCode var.versionCode
+        versionName var.versionName
+
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+        //ARouter阿里(Android页面路由框架)
+        javaCompileOptions {
+            annotationProcessorOptions {
+                arguments = [moduleName: project.getName()]
+            }
+        }
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+}
+
+dependencies {
+    compile fileTree(dir: 'libs', include: ['*.jar'])
+    androidTestCompile('com.android.support.test.espresso:espresso-core:2.2.2', {
+        exclude group: 'com.android.support', module: 'support-annotations'
+    })
+    compile project(path:':libs_base')
+    compile project(path:':libs_icon')
+    //android
+    compile depen.v7
+    testCompile depen.junit
+    //arouter
+    compile depen.arouter_api
+    compile depen.arouter_compiler
+
+}

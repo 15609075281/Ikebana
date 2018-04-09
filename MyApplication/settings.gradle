@@ -1,0 +1,8 @@
+include ':app'
+include ':libs_base'
+include ':libs_icon'
+include ':module_home'
+include ':module_classify'
+include ':module_found'
+include ':module_me'
+
