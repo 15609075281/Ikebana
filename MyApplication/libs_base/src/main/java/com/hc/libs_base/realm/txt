@@ -123,6 +123,43 @@ asyncTask = realm.executeTransactionAsync(new Realm.Transaction() {
         });
         ]
 
+Realm的JSon将字符串直接转对象{
+        realm.executeTransaction(new Realm.Transaction() {
+            @Override
+            public void execute(Realm realm) {
+                realm.createObjectFromJson(CityEntity.class, "{city:\"成都\",id:1}");
+            }
+        });
+Realm 解析 JSON 时遵循如下规则：
+使用包含空值（null）的 JSON 创建对象：
+对于非必须（可为空值的属性），设置其值为 null；
+对于必须（不可为空值的属性），抛出异常；
+使用包含空值（null）的 JSON 更新对象：
+对于非必须（可为空值的属性），设置其值为 null；
+对于必须（不可为空值的属性），抛出异常；
+使用不包含对应属性的 JSON： * 该属性保持不变
+}
+
+查询：{
+更多查询条件
+sum()：对指定字段求和。
+average()：对指定字段求平均值。
+min(): 对指定字段求最小值。
+max() : 对指定字段求最大值。count : 求结果集的记录数量。
+findAll(): 返回结果集所有字段，返回值为RealmResults队列
+findAllSorted() : 排序返回结果集所有字段，返回值为RealmResults队列
+between(), greaterThan(),lessThan(), greaterThanOrEqualTo() & lessThanOrEqualTo()
+equalTo() & notEqualTo()
+contains(), beginsWith() & endsWith()
+isNull() & isNotNull()
+isEmpty()& isNotEmpty()
+}
+
+删除：：{
+                    registerEntities.deleteFirstFromRealm();//删除第一条
+                registerEntities.deleteLastFromRealm();//删除最后一条
+                registerEntities.deleteAllFromRealm();//删除所有
+}
 
 }
 

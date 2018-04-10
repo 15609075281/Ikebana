@@ -37,14 +37,14 @@ public class MyApplication extends Application {
     public void intiRealm(MyApplication myApplication) {
         Realm.init(myApplication);
         //使用默认配置
-        //Realm realm=Realm.getDefaultInstance();
+//        Realm realm=Realm.getDefaultInstance();
         //RealmConfiguration 来配置Realm实现持久化
-        RealmConfiguration configuration = new RealmConfiguration.Builder()
-                .name("myrealm.realm")//文件名
-                .schemaVersion(1)//版本号
-                .deleteRealmIfMigrationNeeded()//声明版本冲突时自动删除原数据库。
-                .build();
-        Realm.getInstance(configuration);
+//        RealmConfiguration configuration = new RealmConfiguration.Builder()
+//                .name("myrealm.realm")//文件名
+//                .schemaVersion(1)//版本号
+//                .deleteRealmIfMigrationNeeded()//声明版本冲突时自动删除原数据库。
+//                .build();
+//        Realm.getInstance(configuration);
     }
 
     /**

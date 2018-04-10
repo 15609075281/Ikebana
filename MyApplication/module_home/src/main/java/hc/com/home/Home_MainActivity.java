@@ -7,6 +7,9 @@ import android.view.View;
 import com.alibaba.android.arouter.facade.annotation.Route;
 import com.alibaba.android.arouter.launcher.ARouter;
 import com.hc.libs_base.ARouterAddressManager;
+import com.hc.libs_base.realm.entity.loginentity.RegisterEntity;
+import com.hc.libs_base.realm.utils.RealmSql;
+import io.realm.RealmResults;
 
 @Route(path = ARouterAddressManager.HOME_MAIN_HOME)
 public class Home_MainActivity extends AppCompatActivity {
@@ -22,6 +25,9 @@ public class Home_MainActivity extends AppCompatActivity {
                 Log.e(TAG,"开始");
                 ARouter.getInstance().build(ARouterAddressManager.CLASSIFY_MAIN).navigation();
                 Log.e(TAG,"结束");
+                RealmSql realmSql=new RealmSql();
+               RealmResults<RegisterEntity>registerEntities= realmSql.findAll();
+               Log.e("1",registerEntities.toString());
             }
         });
     }

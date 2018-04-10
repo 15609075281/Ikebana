@@ -1,4 +1,4 @@
-package com.hc.libs_base.realm.entity;
+package com.hc.libs_base.realm.entity.loginentity;
 
 /**
  * Created by Administrator on 2018/4/10.

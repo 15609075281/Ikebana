@@ -1,20 +1,22 @@
-package com.hc.libs_base.realm.entity;
+package com.hc.libs_base.realm.entity.loginentity;
 
-import io.realm.RealmObject;
+import com.hc.libs_base.realm.entity.UserNameEntity;
+import io.realm.RealmModel;
+import io.realm.annotations.RealmClass;
 
 /**
  * Created by Administrator on 2018/4/10.
  * mark:hc
  */
-public class RegisterEntity extends RealmObject{
+@RealmClass
+public class RegisterEntity implements RealmModel {
 
 
-    public int id;
+    private int id;
+    private String username;
+    private String password;
 
-    public String username;
-
-    public String password;
-
+    public UserNameEntity userNameEntities;
 
     public int getId() {
         return id;
@@ -40,13 +42,23 @@ public class RegisterEntity extends RealmObject{
         this.password = password;
     }
 
+    public UserNameEntity getUserNameEntities() {
+        return userNameEntities;
+    }
+
+    public void setUserNameEntities(UserNameEntity userNameEntities) {
+        this.userNameEntities = userNameEntities;
+    }
+
     @Override
     public String toString() {
-        return "LoginEntity{" +
+        return "RegisterEntity{" +
                 "id=" + id +
                 ", username='" + username + '\'' +
                 ", password='" + password + '\'' +
+                ", userNameEntities=" + userNameEntities +
                 '}';
     }
+
 
 }
