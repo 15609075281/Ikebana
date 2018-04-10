@@ -9,6 +9,13 @@ buildscript {
 
         // NOTE: Do not place your application dependencies here; they belong
         // in the individual module build.gradle files
+        //Realm数据库
+        // 易用：Ream 不是在SQLite基础上的ORM，它有自己的数据查询引擎。并且十分容易使用。
+        //快速：由于它是完全重新开始开发的数据库实现，所以它比任何的ORM速度都快很多，甚至比SLite速度都要快。
+        //跨平台：Realm 支持 iOS & OS X (Objective‑C & Swift) & Android。我们可以在这些平台上共享Realm数据库文件，并且上层逻辑可以不用任何改动的情况下实现移植。
+        //高级：Ream支持加密，格式化查询，易于移植，支持JSON，流式api，数据变更通知等高级特性
+        //可视化：Realm 还提供了一个轻量级的数据库查看工具，在Mac Appstore 可以下载“Realm Browser”这个工具，开发者可以查看数据库当中的内容，执行简单的插入和删除数据的操作。（windows上还不清楚）
+        classpath "io.realm:realm-gradle-plugin:2.2.1"
     }
 }
 

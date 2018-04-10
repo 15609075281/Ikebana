@@ -3,7 +3,7 @@ if(ISNEEDHOMEMODULE.toBoolean()){
 }else{
     apply plugin: 'com.android.application'
 }
-
+apply plugin: 'realm-android'
 android {
     compileSdkVersion var.compileSdkVersion
     buildToolsVersion var.buildToolsVersion

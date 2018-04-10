@@ -1,0 +1,128 @@
+数据库
+
+优势：
+{
+易用：Ream 不是在SQLite基础上的ORM，它有自己的数据查询引擎。并且十分容易使用。
+快速：由于它是完全重新开始开发的数据库实现，所以它比任何的ORM速度都快很多，甚至比SLite速度都要快。
+跨平台：Realm 支持 iOS & OS X (Objective‑C & Swift) & Android。我们可以在这些平台上共享Realm数据库文件，并且上层逻辑可以不用任何改动的情况下实现移植。
+高级：Ream支持加密，格式化查询，易于移植，支持JSON，流式api，数据变更通知等高级特性
+可视化：Realm 还提供了一个轻量级的数据库查看工具，在Mac Appstore 可以下载“Realm Browser”这个工具，开发者可以查看数据库当中的内容，执行简单的插入和删除数据的操作。（windows上还不清楚）
+}
+
+条件：{
+目前不支持Android以外的Java
+Android Studio >= 1.5.1
+较新的Android SDK版本
+JDK version >=7.
+支持API 9(Android 2.3)以及之后的版本}
+
+依赖注入：{
+项目buid：
+buildscript {
+    repositories {
+        jcenter()
+    }
+    dependencies {
+        classpath "io.realm:realm-gradle-plugin:2.0.2"
+    }
+}
+module里添加
+apply plugin: 'realm-android'}
+
+初始化application：{
+        //使用默认配置
+        Realm realm=Realm.getDefaultInstance();
+        //RealmConfiguration 来配置Realm实现持久化
+        RealmConfiguration configuration = new RealmConfiguration.Builder()
+                .name("myrealm.realm")//文件名
+                .schemaVersion(1)//版本号
+                .deleteRealmIfMigrationNeeded()//声明版本冲突时自动删除原数据库。
+                .build();
+        Realm.getInstance(configuration);
+        //RealmConfiguration 来配置Realm实现非持久化
+                RealmConfiguration config=new RealmConfiguration.Builder( )
+                        .name("myrealm.realm")//保存在内存中
+                        .inMemory()//声明数据库只在内存中持久化。
+                        .build();
+         Realm.getInstance(config);
+}
+
+RealmConfiguration 支持的方法：{
+Builder.name : 指定数据库的名称。如不指定默认名为default。
+Builder.schemaVersion : 指定数据库的版本号。
+Builder.encryptionKey : 指定数据库的密钥。
+Builder.migration : 指定迁移操作的迁移类。
+Builder.deleteRealmIfMigrationNeeded : 声明版本冲突时自动删除原数据库。
+Builder.inMemory : 声明数据库只在内存中持久化。
+build : 完成配置构建。
+}
+
+关闭Realm：{
+记得使用完后，在 onDestroy 中关闭Realm
+@Override protected void onDestroy() {
+    super.onDestroy();
+    // Close the Realm instance.
+    realm.close();
+}
+}
+
+增：：：：
+写入操作需要在事务中进行，可以使用 executeTransaction 方法来开启事务。
+{
+
+注意：[
+如果在UI线程中插入过多的数据，可能会导致主线程拥塞。
+使用 copyToRealmOrUpdate 或 copyToRealm 方法插入数据
+当Model中存在主键的时候，推荐使用 copyToRealmOrUpdate 方法插入数据。
+如果对象存在，就更新该对象；反之，它会创建一个新的对象。若该Model没有主键，使用 copyToRealm 方法，否则将抛出异常。
+   final LoginEntity loginEntity = new LoginEntity();
+        loginEntity.setUsername("黄渤中");
+        loginEntity.setPassword("123456");
+        realm.executeTransaction(new Realm.Transaction() {
+            @Override
+            public void execute(Realm realm) {
+                realm.copyToRealmOrUpdate((Iterable<RealmModel>) loginEntity);
+            }
+        });
+        如果使用的是这样的module
+        public class User2 extends RealmObject {
+           public String name;
+           public int age;
+        }
+        就使用
+        realm.executeTransaction(new Realm.Transaction() {
+                    @Override
+                    public void execute(Realm realm) {
+                        RegisterEntity registerEntity = realm.createObject(RegisterEntity.class);
+                        registerEntity.setUsername("黄渤中二号");
+                        registerEntity.setUsername("123456");
+                    }
+                });
+                方法
+]
+
+注意：[
+在UI和后台线程同时开启创建write的事务，可能会导致ANR错误。为了避免该问题，可以使用executeTransactionAsync来实现。
+使用 executeTransactionAsync
+该方法会开启一个子线程来执行事务，并且在执行完成后进行结果通知。
+asyncTask = realm.executeTransactionAsync(new Realm.Transaction() {
+            @Override
+            public void execute(Realm realm) {
+
+            }
+        }, new Realm.Transaction.OnSuccess() {
+            @Override
+            public void onSuccess() {
+
+            }
+        }, new Realm.Transaction.OnError() {
+            @Override
+            public void onError(Throwable error) {
+
+            }
+        });
+        ]
+
+
+}
+
