@@ -1,0 +1,37 @@
+
+MVp+ARouter + Realm +RxJava+Retrofit+OkHttp
+
+
+ARouter:::: 路由 实现组件化
+应用方式{
+
+module中添加:::::::::
+        android{
+        defaultConfig{
+            //ARouter阿里(Android页面路由框架)
+        javaCompileOptions {
+            annotationProcessorOptions {
+                arguments = [moduleName: project.getName()]
+            }
+        }
+          }
+        }
+
+        dependencies{
+                  compile 'com.alibaba:arouter-api:1.3.1'//api使用的版本必须和compiler对应
+                  compile  'com.alibaba:arouter-compiler:1.1.4'//https://github.com/alibaba/ARouter
+        }
+
+ Application中初始化：：：：：
+         OnCreate(){
+                ARouter.openLog();
+                ARouter.openDebug();
+                ARouter.init(myApplication);
+                }
+
+}
+
+
+Realm ： 数据库 Ream 不是在SQLite基础上的ORM，它有自己的数据查询引擎。并且十分容易使用。
+
+RxJava:::::
