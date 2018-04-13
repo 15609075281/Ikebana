@@ -7,8 +7,8 @@ import android.view.View;
 import com.alibaba.android.arouter.facade.annotation.Route;
 import com.alibaba.android.arouter.launcher.ARouter;
 import com.hc.libs_base.ARouterAddressManager;
-import com.hc.libs_base.realm.entity.loginentity.RegisterEntity;
-import com.hc.libs_base.realm.utils.RealmSql;
+import com.hc.libs_base.Entity.registerentity.RegisterEntity;
+import com.hc.libs_base.database.realm.RealmSql;
 import io.realm.RealmResults;
 
 @Route(path = ARouterAddressManager.HOME_MAIN_HOME)

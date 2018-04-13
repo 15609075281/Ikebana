@@ -31,9 +31,7 @@ dependencies {
         exclude group: 'com.android.support', module: 'support-annotations'
     })
     compile depen.v7
-    testCompile 'junit:junit:4.12'
-
-//    testCompile depen.junit
+    testCompile depen.junit
     //arouter
 //    compile depen.arouter_api
 //    compile depen.arouter_compiler

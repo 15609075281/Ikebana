@@ -1,28 +1,24 @@
-package com.hc.libs_base.realm.utils;
+package com.hc.libs_base.database.realm;
 
 import android.util.Log;
-import com.hc.libs_base.realm.entity.cityentity.CityEntity;
-import com.hc.libs_base.realm.entity.loginentity.LoginEntity;
-import com.hc.libs_base.realm.entity.loginentity.RegisterEntity;
-import com.hc.libs_base.realm.entity.UserNameEntity;
+
+import com.hc.libs_base.Entity.cityentity.CityEntity;
+import com.hc.libs_base.Entity.loginentity.LoginEntity;
+import com.hc.libs_base.Entity.registerentity.RegisterEntity;
+import com.hc.libs_base.Entity.registerentity.save.Center;
+import com.hc.libs_base.database.realm.manager.RealmManager;
 import io.realm.*;
 
 import java.io.*;
 
 /**
  * Created by Administrator on 2018/4/10.
+ * mark:hc
  */
 public class RealmSql {
 
-
     public RealmSql() {
-        // RealmConfiguration 来配置Realm实现持久化
-        RealmConfiguration configuration = new RealmConfiguration.Builder()
-                .name("myrealm.realm")//文件名
-                .schemaVersion(1)//版本号
-                .deleteRealmIfMigrationNeeded()//声明版本冲突时自动删除原数据库。
-                .build();
-        Realm.getInstance(configuration);
+        RealmManager.getPersistentRealm();
         getRealm();
     }
 
@@ -40,17 +36,6 @@ public class RealmSql {
         return realm;
     }
 
-    /**
-     * 创建非持久化的数据库
-     */
-    public void setRealm() {
-        //RealmConfiguration 来配置Realm实现非持久化
-        RealmConfiguration config = new RealmConfiguration.Builder()
-                .name("myrealm.realm")//保存在内存中
-                .inMemory()//声明数据库只在内存中持久化。
-                .build();
-        Realm.getInstance(config);
-    }
 
     /**
      * 如果当 Acitivity 或 Fragment 被销毁时，
@@ -140,10 +125,11 @@ public class RealmSql {
                 RegisterEntity registerEntity = realm.createObject(RegisterEntity.class);
                 registerEntity.setUsername("黄渤中二号");
                 registerEntity.setUsername("123456");
-                UserNameEntity userNameEntity = realm.createObject(UserNameEntity.class);
-                userNameEntity.setUsername("黄渤中三号");
-                userNameEntity.setPassword("123456");
-                registerEntity.setUserNameEntities(userNameEntity);
+                Center center = realm.createObject(Center.class);
+                center.setGender("男");
+                center.setBirthday("09-11");
+                center.setAddress("中路河道蟹");
+                registerEntity.setCenters(center);
             }
         });
 

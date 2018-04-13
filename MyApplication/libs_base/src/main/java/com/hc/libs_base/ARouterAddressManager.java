@@ -11,35 +11,37 @@ public class ARouterAddressManager {
      * ---------------------------------------------------APP------------------------------------------------------------
      * ----------------------------------------------------------------------------------------------------------------
      */
-    public static final String APP_MAIN="/app/main";
-    public static final String APP_TEST="/app/test";
+    public static final String APP_SPLASH_ACTIVITY = "/app/splash/activity";
+    public static final String APP_LOGIN_ACTIVITY = "/app/login/activity";
+    public static final String APP_REGISTER_ACTIVITY = "/app/register/activity";
+    public static final String APP_MAIN_ACTIVITY = "/app/main/activity";
     /**
      * ----------------------------------------------------------------------------------------------------------------
      * ---------------------------------------------------HOME------------------------------------------------------------
      * ----------------------------------------------------------------------------------------------------------------
      */
-    public static final String HOME_MAIN="/home/main";
-    public static final String HOME_MAIN_HOME="/home/main/home";
+    public static final String HOME_MAIN = "/home/main";
+    public static final String HOME_MAIN_HOME = "/home/main/home";
 
     /**
      * ----------------------------------------------------------------------------------------------------------------
      * ---------------------------------------------------CLASSIFy------------------------------------------------------------
      * ----------------------------------------------------------------------------------------------------------------
      */
-    public static final String CLASSIFY_MAIN="/classify/main";
+    public static final String CLASSIFY_MAIN = "/classify/main";
 
     /**
      * ----------------------------------------------------------------------------------------------------------------
      * ---------------------------------------------------FOUND------------------------------------------------------------
      * ----------------------------------------------------------------------------------------------------------------
      */
-    public static final String FOUND_MAIN="/found/main";
+    public static final String FOUND_MAIN = "/found/main";
 
     /**
      * ----------------------------------------------------------------------------------------------------------------
      * ---------------------------------------------------ME------------------------------------------------------------
      * ----------------------------------------------------------------------------------------------------------------
      */
-    public static final String ME_MAIN="/me/main";
+    public static final String ME_MAIN = "/me/main";
 
 }

@@ -1,10 +1,11 @@
-package com.hc.libs_base.realm.entity.cityentity;
+package com.hc.libs_base.Entity.cityentity;
 
 import io.realm.RealmModel;
 import io.realm.annotations.RealmClass;
 
 /**
  * Created by Administrator on 2018/4/10.
+ * mark:hc
  */
 @RealmClass
 public class CityEntity implements RealmModel {

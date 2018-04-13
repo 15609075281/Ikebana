@@ -18,11 +18,17 @@ public abstract class BaseActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         //初始化界面
         setContentView(intiView());
+        findView();
     }
 
     /**
      * 获取view
      */
     public abstract int intiView();
+
+    /**
+     * 初始化
+     */
+    public abstract void findView();
 
 }

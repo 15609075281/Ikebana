@@ -17,7 +17,7 @@ public class Me_MainActivity extends AppCompatActivity {
         findViewById(R.id.me_main_text).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                ARouter.getInstance().build(ARouterAddressManager.APP_MAIN).navigation();
+                ARouter.getInstance().build(ARouterAddressManager.APP_MAIN_ACTIVITY).navigation();
             }
         });
     }
