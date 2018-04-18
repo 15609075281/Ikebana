@@ -1,3 +1,17 @@
 <resources>
 	<string name="app_name">Libs_icon</string>
+
+	<string name="username">用户名:</string>
+	<string name="username_hint">输入用户名</string>
+	<string name="password">密码:</string>
+	<string name="password_hint">输入密码</string>
+
+	<string name="login">登录</string>
+
+	<string name="login_qq">QQ</string>
+	<string name="login_WeChat">微信</string>
+	<string name="login_weiBo">微博</string>
+
+	<string name="success">登录成功</string>
+	<string name="error">登录失败</string>
 </resources>

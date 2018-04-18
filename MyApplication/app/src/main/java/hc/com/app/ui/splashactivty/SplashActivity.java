@@ -5,13 +5,14 @@ import com.alibaba.android.arouter.launcher.ARouter;
 import com.hc.libs_base.ARouterAddressManager;
 import com.hc.libs_base.BaseActivity;
 import hc.com.app.R;
+import hc.com.app.view.splashview.SplashView;
 
 /**
  * Created by Administrator on 2018/4/13.
  * mark:hc
  */
 @Route(path = ARouterAddressManager.APP_SPLASH_ACTIVITY)
-public class SplashActivity extends BaseActivity {
+public class SplashActivity extends BaseActivity implements SplashView{
     @Override
     public int intiView() {
         return R.layout.app_splashactivity_xml;
