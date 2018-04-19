@@ -1,6 +1,7 @@
 package hc.com.app.ui.loginactivity;
 
 import android.content.Context;
+import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
@@ -8,9 +9,13 @@ import android.widget.Toast;
 import com.alibaba.android.arouter.facade.annotation.Route;
 import com.hc.libs_base.ARouterAddressManager;
 import com.hc.libs_base.BaseActivity;
+import com.hc.libs_base.Entity.loginentity.LoginEntity;
+import com.hc.libs_base.database.realm.RealmSql;
 import hc.com.app.R;
 import hc.com.app.persen.loginpersen.LoginPersen;
 import hc.com.app.view.loginview.LoginView;
+import io.realm.RealmResults;
+
 
 /**
  * Created by Administrator on 2018/4/13.
@@ -25,9 +30,9 @@ public class LoginActivity extends BaseActivity implements LoginView {
     private LoginPersen loginPersen;
 
     private EditText username;
-    private EditText password;
+    private EditText code_input;
+    private TextView code_get;
     private TextView login;
-
 
     @Override
     public int intiView() {
@@ -36,10 +41,15 @@ public class LoginActivity extends BaseActivity implements LoginView {
 
     @Override
     public void findView() {
+
         context = LoginActivity.this;
+        loginPersen = new LoginPersen(LoginActivity.this);
+
         username = (EditText) findViewById(R.id.app_login_username);
-        password = (EditText) findViewById(R.id.app_login_password);
+        code_input = (EditText) findViewById(R.id.code_input);
+        code_get = (TextView) findViewById(R.id.code_get);
         login = (TextView) findViewById(R.id.app_login_login);
+        code_get.setOnClickListener(lister);
         login.setOnClickListener(lister);
     }
 
@@ -47,14 +57,13 @@ public class LoginActivity extends BaseActivity implements LoginView {
         @Override
         public void onClick(View view) {
             switch (view.getId()) {
-
+                case R.id.code_get:
+                    loginPersen.onCode();
+                    break;
                 case R.id.app_login_login:
-                    loginPersen=new LoginPersen(LoginActivity.this);
                     loginPersen.onLogin();
                     break;
-
                 default:
-                    Toast.makeText(context, "已超出范围", Toast.LENGTH_LONG).show();
             }
 
 
@@ -68,14 +77,22 @@ public class LoginActivity extends BaseActivity implements LoginView {
     }
 
     @Override
-    public String getCode() {
-        return null;
+    public void setCode_txt(String code) {
+        code_get.setText(code);
+        code_get.setOnClickListener(lister);
     }
 
     @Override
-    public String getPassWord() {
-        return password.getText().toString();
+    public void setCode(String code) {
+        code_get.setText(code);
+        code_get.setOnClickListener(null);
     }
+
+    @Override
+    public String getCodeInput() {
+        return code_input.getText().toString();
+    }
+
 
     @Override
     public void setOnSuccess(String success) {
@@ -85,5 +102,11 @@ public class LoginActivity extends BaseActivity implements LoginView {
     @Override
     public void setOnError(String error) {
         Toast.makeText(context, error, Toast.LENGTH_LONG).show();
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        loginPersen.codeEnd();
     }
 }

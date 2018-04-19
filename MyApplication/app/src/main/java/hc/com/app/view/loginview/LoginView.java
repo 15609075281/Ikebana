@@ -14,18 +14,18 @@ public interface LoginView {
     public abstract String getUsername();
 
     /**
-     * 获取验证码
+     * 获取验证码_状态按钮
      *
      * @return
      */
-    public abstract String getCode();
+    public abstract void setCode_txt(String code);
+    public abstract void setCode(String code);
 
     /**
-     * 获取密码
-     *
+     *获取验证码
      * @return
      */
-    public abstract String getPassWord();
+    public abstract String getCodeInput();
 
     /**
      * 成功反馈

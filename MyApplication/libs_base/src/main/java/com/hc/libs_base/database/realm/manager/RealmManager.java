@@ -12,13 +12,15 @@ public class RealmManager {
     /**
      * 创建持久化的数据库
      */
-    public static void getPersistentRealm() {
+    public static RealmConfiguration getPersistentRealm() {
         // RealmConfiguration 来配置Realm实现持久化
         RealmConfiguration configuration = new RealmConfiguration.Builder()
                 .name("myrealm.realm")//文件名
                 .schemaVersion(1)//版本号
+                .deleteRealmIfMigrationNeeded()
                 .build();
-        Realm.getInstance(configuration);
+//        Realm.getInstance(configuration);
+        return configuration;
     }
 
     /**

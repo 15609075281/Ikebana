@@ -6,7 +6,27 @@ package hc.com.app.module.loginmodule.loginmoduleimp;
  */
 public interface LoginModuleImp {
 
-    void OnLoginLister(String username,String password,OnLoginLister onLoginLister);
+    /**
+     * 获取验证码
+     * @param onCodeLister
+     */
+    void OnCodeLister(String time,OnCodeLister onCodeLister);
+
+    interface  OnCodeLister{
+
+        void codeGet(String code);
+
+        void codeCountDown(String code);
+
+    }
+
+    /**
+     * 登录
+     * @param username
+     * @param code_input
+     * @param onLoginLister
+     */
+    void OnLoginLister(String username,String code_input,OnLoginLister onLoginLister);
 
     interface OnLoginLister {
 
@@ -15,7 +35,7 @@ public interface LoginModuleImp {
         void OnError(String error);
     }
 
-    ;
+
 
 
 }

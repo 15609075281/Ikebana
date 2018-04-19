@@ -25,9 +25,9 @@ public class Home_MainActivity extends AppCompatActivity {
                 Log.e(TAG,"开始");
                 ARouter.getInstance().build(ARouterAddressManager.CLASSIFY_MAIN).navigation();
                 Log.e(TAG,"结束");
-                RealmSql realmSql=new RealmSql();
-               RealmResults<RegisterEntity>registerEntities= realmSql.findAll();
-               Log.e("1",registerEntities.toString());
+//                RealmSql realmSql=new RealmSql();
+//               RealmResults<RegisterEntity>registerEntities= realmSql.findAll();
+//               Log.e("1",registerEntities.toString());
             }
         });
     }

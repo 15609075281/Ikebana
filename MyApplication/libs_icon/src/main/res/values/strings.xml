@@ -2,7 +2,11 @@
 	<string name="app_name">Libs_icon</string>
 
 	<string name="username">用户名:</string>
-	<string name="username_hint">输入用户名</string>
+	<string name="username_hint">输入手机号</string>
+
+	<string name="code_get">获取验证码</string>
+	<string name="code_Input">输入验证码</string>
+
 	<string name="password">密码:</string>
 	<string name="password_hint">输入密码</string>
 

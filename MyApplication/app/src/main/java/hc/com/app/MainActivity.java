@@ -29,10 +29,9 @@ public class MainActivity extends BaseActivity {
         findViewById(R.id.app_main_text).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
                 ARouter.getInstance().build(ARouterAddressManager.HOME_MAIN_HOME).navigation();
-                RealmSql realmSql = new RealmSql();
-                realmSql.saveExecuteTransactionAsync(new Object());
+//                RealmSql realmSql = new RealmSql();
+//                realmSql.saveExecuteTransactionAsync(new Object());
             }
         });
     }
