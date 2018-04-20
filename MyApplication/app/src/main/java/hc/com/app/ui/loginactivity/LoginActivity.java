@@ -1,8 +1,12 @@
 package hc.com.app.ui.loginactivity;
 
+import android.app.Dialog;
 import android.content.Context;
 import android.util.Log;
+import android.view.Gravity;
+import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -58,6 +62,7 @@ public class LoginActivity extends BaseActivity implements LoginView {
         public void onClick(View view) {
             switch (view.getId()) {
                 case R.id.code_get:
+                    dialog();
                     loginPersen.onCode();
                     break;
                 case R.id.app_login_login:
@@ -108,5 +113,19 @@ public class LoginActivity extends BaseActivity implements LoginView {
     protected void onDestroy() {
         super.onDestroy();
         loginPersen.codeEnd();
+    }
+
+
+    public void dialog() {
+        Dialog bottomDialog = new Dialog(this, R.style.BottomDialog);
+View contentView = LayoutInflater.from(this).inflate(R.layout.dialog_content_circle, null);
+bottomDialog.setContentView(contentView);
+ViewGroup.MarginLayoutParams params = (ViewGroup.MarginLayoutParams) contentView.getLayoutParams();
+//params.width = getResources().getDisplayMetrics().widthPixels - DensityUtil.dp2px(this, 16f);
+//params.bottomMargin = DensityUtil.dp2px(this, 8f);
+contentView.setLayoutParams(params);
+bottomDialog.getWindow().setGravity(Gravity.BOTTOM);
+bottomDialog.getWindow().setWindowAnimations(R.style.BottomDialog_Animation);
+bottomDialog.show();
     }
 }

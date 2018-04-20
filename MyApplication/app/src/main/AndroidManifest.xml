@@ -11,19 +11,15 @@
 			android:theme="@style/Theme.AppCompat.DayNight.NoActionBar">
 		<!--闪屏-->
 		<activity android:name=".ui.splashactivty.SplashActivity">
+
+		</activity>
+		<!--登录-->
+		<activity android:name=".ui.loginactivity.LoginActivity">
 			<intent-filter>
 				<action android:name="android.intent.action.MAIN"/>
 
 				<category android:name="android.intent.category.LAUNCHER"/>
 			</intent-filter>
-		</activity>
-		<!--登录-->
-		<activity android:name=".ui.loginactivity.LoginActivity">
-
-		</activity>
-		<!--注册-->
-		<activity android:name=".ui.registeractivity.RegisterActivity">
-
 		</activity>
 		<!--主窗口-->
 		<activity android:name=".MainActivity">
